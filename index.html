@@ -1,18 +1,89 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       $(document).ready(function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser			
+			//show initial e-mail count
+			var inboxCount = 2;
+			$("#inboxCount").text(inboxCount);
+			//new message count - to initially hide new message body
+			var newMessageCount = 0;
+			
+			//hide body of initial 10 messages and have toggle			
+			$(".hidden").hide();
+			$(".row").click(function(){
+				$(this).find(".hidden").toggle();
+			});
+			
+			//populate initial 10 messages
+			//right now just 2 messages to keep simple
+			//first				
+			$("#1date").text(window.geemails[0].date);
+			$("#1sender").text(window.geemails[0].sender);
+			$("#1subject").text(window.geemails[0].subject);
+			$("#1body").text(window.geemails[0].body);
+			//second
+			$("#2date").text(window.geemails[1].date);
+			$("#2sender").text(window.geemails[1].sender);
+			$("#2subject").text(window.geemails[1].subject);
+			$("#2body").text(window.geemails[1].body);	
+			
+			//create new messages every 3 seconds & update email count
+			setInterval(function(){
+				//create new message
+				var newMessage = getNewMessage();
+				//update new message count to initially hide newly created message without hiding all newly created messages
+				newMessageCount = newMessageCount + 1;
+				//create new row with class for clicking and specific body id for toggling
+				$("#emails").append('<tr class="newRow"><td>'+newMessage.date+'</td><td>'+newMessage.sender+'</td><td>'+newMessage.subject+'</td><td id="hidden'+newMessageCount+'" class="newHidden">'+newMessage.body+'</td></tr>');	
+				//update email count
+				window.geemails.push(newMessage);
+				inboxCount = inboxCount + 1;
+				$("#inboxCount").text(inboxCount);
+				//initially hide newly created message
+				$('#hidden'+newMessageCount).hide();				
+			}, 3000);
+			
+			$(".newRow").click(function(){
+				$(this).find(".newHidden").toggle();
+			});	
+	  //end of ready function
       });
     </script>
 	</head>
+	
 	<body>
 		<div class="container" id="main">
-			Build Me!
+			<!--inbox count-->
+			<h3>Inbox Count</h3>
+			<p id="inboxCount"></p>
+			
+			<!--emails-->
+			<table id="emails" style="width:100%">
+			<tr>
+				<th>Date</th>
+				<th>Sender</th>
+				<th>Subject</th>
+			</tr>
+			<tr class="row">
+				<td id="1date"></td>
+				<td id="1sender"></td>
+				<td id="1subject"></td>
+				<td id="1body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="2date"></td>
+				<td id="2sender"></td>
+				<td id="2subject"></td>
+				<td id="2body" class="hidden"></td>
+			</tr>
+
+			</table>
 		</div>
 	</body>
 </html>
