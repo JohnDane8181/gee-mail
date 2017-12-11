@@ -11,7 +11,7 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser			
 			//show initial e-mail count
-			var inboxCount = 2;
+			var inboxCount = 10;
 			$("#inboxCount").text(inboxCount);
 			//new message count - to initially hide new message body
 			var newMessageCount = 0;
@@ -23,17 +23,57 @@
 			});
 			
 			//populate initial 10 messages
-			//right now just 2 messages to keep simple
-			//first				
+			//possibly could have used a for loop
+			//first message
 			$("#1date").text(window.geemails[0].date);
 			$("#1sender").text(window.geemails[0].sender);
 			$("#1subject").text(window.geemails[0].subject);
 			$("#1body").text(window.geemails[0].body);
-			//second
+			//second message
 			$("#2date").text(window.geemails[1].date);
 			$("#2sender").text(window.geemails[1].sender);
 			$("#2subject").text(window.geemails[1].subject);
 			$("#2body").text(window.geemails[1].body);	
+			//third message
+			$("#3date").text(window.geemails[2].date);
+			$("#3sender").text(window.geemails[2].sender);
+			$("#3subject").text(window.geemails[2].subject);
+			$("#3body").text(window.geemails[2].body);
+			//fourth message
+			$("#4date").text(window.geemails[3].date);
+			$("#4sender").text(window.geemails[3].sender);
+			$("#4subject").text(window.geemails[3].subject);
+			$("#4body").text(window.geemails[3].body);
+			//fifth message
+			$("#5date").text(window.geemails[4].date);
+			$("#5sender").text(window.geemails[4].sender);
+			$("#5subject").text(window.geemails[4].subject);
+			$("#5body").text(window.geemails[4].body);
+			//sixth message
+			$("#6date").text(window.geemails[5].date);
+			$("#6sender").text(window.geemails[5].sender);
+			$("#6subject").text(window.geemails[5].subject);
+			$("#6body").text(window.geemails[5].body);
+			//seventh message
+			$("#7date").text(window.geemails[6].date);
+			$("#7sender").text(window.geemails[6].sender);
+			$("#7subject").text(window.geemails[6].subject);
+			$("#7body").text(window.geemails[6].body);
+			//eighth message
+			$("#8date").text(window.geemails[7].date);
+			$("#8sender").text(window.geemails[7].sender);
+			$("#8subject").text(window.geemails[7].subject);
+			$("#8body").text(window.geemails[7].body);
+			//ninth message
+			$("#9date").text(window.geemails[8].date);
+			$("#9sender").text(window.geemails[8].sender);
+			$("#9subject").text(window.geemails[8].subject);
+			$("#9body").text(window.geemails[8].body);
+			//tenth message
+			$("#10date").text(window.geemails[9].date);
+			$("#10sender").text(window.geemails[9].sender);
+			$("#10subject").text(window.geemails[9].subject);
+			$("#10body").text(window.geemails[9].body);
 
 			//create new messages every 3 seconds & update email count
 			setInterval(function(){
@@ -85,6 +125,54 @@
 				<td id="2sender"></td>
 				<td id="2subject"></td>
 				<td id="2body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="3date"></td>
+				<td id="3sender"></td>
+				<td id="3subject"></td>
+				<td id="3body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="4date"></td>
+				<td id="4sender"></td>
+				<td id="4subject"></td>
+				<td id="4body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="5date"></td>
+				<td id="5sender"></td>
+				<td id="5subject"></td>
+				<td id="5body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="6date"></td>
+				<td id="6sender"></td>
+				<td id="6subject"></td>
+				<td id="6body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="7date"></td>
+				<td id="7sender"></td>
+				<td id="7subject"></td>
+				<td id="7body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="8date"></td>
+				<td id="8sender"></td>
+				<td id="8subject"></td>
+				<td id="8body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="9date"></td>
+				<td id="9sender"></td>
+				<td id="9subject"></td>
+				<td id="9body" class="hidden"></td>
+			</tr>
+			<tr class="row">
+				<td id="10date"></td>
+				<td id="10sender"></td>
+				<td id="10subject"></td>
+				<td id="10body" class="hidden"></td>
 			</tr>
 
 			</table>
