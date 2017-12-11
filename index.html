@@ -16,7 +16,7 @@
 			//new message count - to initially hide new message body
 			var newMessageCount = 0;
 			
-			//hide body of initial 10 messages and have toggle			
+			//hide body of initial 10 messages and have toggle	
 			$(".hidden").hide();
 			$(".row").click(function(){
 				$(this).find(".hidden").toggle();
@@ -34,7 +34,7 @@
 			$("#2sender").text(window.geemails[1].sender);
 			$("#2subject").text(window.geemails[1].subject);
 			$("#2body").text(window.geemails[1].body);	
-			
+
 			//create new messages every 3 seconds & update email count
 			setInterval(function(){
 				//create new message
@@ -50,10 +50,17 @@
 				//initially hide newly created message
 				$('#hidden'+newMessageCount).hide();				
 			}, 3000);
+
+			//toggle of newly created dynamic rows after .ready occurs
+			$("#emails").on('click','tr',function(){
+				$(this).find(".newHidden").toggle();
+			});
 			
+			/*
 			$(".newRow").click(function(){
 				$(this).find(".newHidden").toggle();
 			});	
+			*/
 	  //end of ready function
       });
     </script>
