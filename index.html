@@ -16,9 +16,11 @@
 			//new message count - to initially hide new message body
 			var newMessageCount = 0;
 			
-			//hide body of initial 10 messages and have toggle	
+
+			//hide body of initial 10 messages and have toggle event regardless of before or after page loads
 			$(".hidden").hide();
-			$(".row").click(function(){
+			//toggle either initial or new emails on click
+			$("#emails").on('click','tr',function(){
 				$(this).find(".hidden").toggle();
 			});
 			
@@ -74,28 +76,22 @@
 			$("#10sender").text(window.geemails[9].sender);
 			$("#10subject").text(window.geemails[9].subject);
 			$("#10body").text(window.geemails[9].body);
-
+			
 			//create new messages every 3 seconds & update email count
 			setInterval(function(){
 				//create new message
 				var newMessage = getNewMessage();
-				//update new message count to initially hide newly created message without hiding all newly created messages
+				//update new message count as counter to initially hide newly created message without hiding all newly created messages
 				newMessageCount = newMessageCount + 1;
 				//create new row with class for clicking and specific body id for toggling
-				$("#emails").append('<tr class="newRow"><td>'+newMessage.date+'</td><td>'+newMessage.sender+'</td><td>'+newMessage.subject+'</td><td id="hidden'+newMessageCount+'" class="newHidden">'+newMessage.body+'</td></tr>');	
-				//update email count
+				$("#emails").append('<tr class="newRow"><td>'+newMessage.date+'</td><td>'+newMessage.sender+'</td><td>'+newMessage.subject+'</td><td id="hidden'+newMessageCount+'" class="hidden">'+newMessage.body+'</td></tr>');	
+				//update email count and display new count
 				window.geemails.push(newMessage);
 				inboxCount = inboxCount + 1;
 				$("#inboxCount").text(inboxCount);
 				//initially hide newly created message
 				$('#hidden'+newMessageCount).hide();				
 			}, 3000);
-
-			//toggle of newly created dynamic rows after .ready occurs
-			$("#emails").on('click','tr',function(){
-				$(this).find(".newHidden").toggle();
-			});
-			
 	  //end of ready function
       });
     </script>
