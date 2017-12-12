@@ -12,7 +12,7 @@
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser			
 			//show initial e-mail count
 			var inboxCount = 10;
-			$("#inboxCount").text(inboxCount);
+			$("#inboxCount").text('Inbox('+inboxCount+')');
 			//new message count - to initially hide new message body
 			var newMessageCount = 0;
 			
@@ -88,7 +88,7 @@
 				//update email count and display new count
 				window.geemails.push(newMessage);
 				inboxCount = inboxCount + 1;
-				$("#inboxCount").text(inboxCount);
+				$("#inboxCount").text('Inbox('+inboxCount+')');
 				//initially hide newly created message
 				$('#hidden'+newMessageCount).hide();				
 			}, 3000);
@@ -99,11 +99,19 @@
 	
 	<body>
 		<div class="container" id="main">
-			<!--inbox count-->
-			<h3>Inbox Count</h3>
-			<p id="inboxCount"></p>
+			<header>
+				<h1>GeeMail Messages</h1>
+			</header>
+	
+			<!--inbox count in sidebar-->
+			<nav>
+				<ul>
+					<li id="inboxCount"></li>
+				<ul>
+			</nav>
 			
 			<!--emails-->
+			<article>
 			<table id="emails" style="width:100%">
 			<tr>
 				<th>Date</th>
@@ -170,8 +178,10 @@
 				<td id="10subject"></td>
 				<td id="10body" class="hidden"></td>
 			</tr>
-
 			</table>
+			</article>
+			
+			<footer>Copyright &copy; David Luis</footer>
 		</div>
 	</body>
 </html>
